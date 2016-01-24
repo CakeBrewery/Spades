@@ -13,29 +13,19 @@
 <script src="slot.js"></script> 
 
 <script> 
-var canvas = document.getElementById("ctx"); 
 var ctx = document.getElementById("ctx").getContext("2d");
 ctx.font = '30px Arial'
 
+game = Game(); 
 
-function getMousePos(canvas, evt) {
-	var rect = canvas.getBoundingClientRect();
-	return {
-		x: evt.clientX - rect.left,
-		y: evt.clientY - rect.top
-	};
-}
-
-canvas.addEventListener('mousemove', function(evt) {
-	var mousePos = getMousePos(canvas, evt);
-	var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
-	console.log(message);
-}, false);
+ctx.canvas.addEventListener('click', function(event){
+	game.mouseX = event.clientX - ctx.canvas.offsetLeft; 
+	game.mouseY = event.clientY - ctx.canvas.offsetTop; 
+});
 
 var WIDTH = 600; 
 var HEIGHT = 600; 
 
-game = Game(); 
 
 update = function(){
 	ctx.clearRect(0,0, WIDTH, HEIGHT); 
@@ -44,6 +34,6 @@ update = function(){
 
 game.init(); 
 game.setPhase('initial'); 
-setInterval(update, 200); 
+setInterval(update, 100); 
 </script> 
 

@@ -1,5 +1,10 @@
+/* 
+Card class is an instance of Entity. (Entities are basically drawable objects)
+Overrides draw() method to print a card using canvas instead of drawing an image
+*/
+
 Card = function(rank, suit, name, id, x, y, width, height, img){
-	var self = Entity('card', id, x, y, 0, 0, width, height, false); 
+	var self = Entity('card', id, x, y, 0, 0, 50, 70, false); 
 
 	self.name =  name || 'poker card'; 
 	self.rank =  rank; 
@@ -7,8 +12,12 @@ Card = function(rank, suit, name, id, x, y, width, height, img){
 
 	self.draw = function(){
 		ctx.save(); 
-		ctx.rect(self.x,self.y,50,70); 
+		ctx.fillStyle="#FFFFFF";
+		ctx.beginPath();
+		ctx.rect(self.x,self.y,this.width,this.height); 
+		ctx.fillRect(self.x,self.y,this.width,this.height); 
 		ctx.stroke(); 
+		ctx.closePath(); 
 
 		switch(self.suit){
 			case 'diamonds': 
@@ -34,7 +43,6 @@ Card = function(rank, suit, name, id, x, y, width, height, img){
 			default: 
 				break; 
 		}
-
 		ctx.restore(); 
 	}
 

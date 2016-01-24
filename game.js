@@ -3,7 +3,10 @@ Game = function(){
 		current_phase: 'draw',	
 		p1: Player(), 
 		p2: Player(),
+		mouseX: 0,
+		mouseY: 0,
 		entities: [],
+		events: [], 
 	}
 
 	self.init = function(){
@@ -69,8 +72,9 @@ Game = function(){
 			self.p1.slots[key].update(); 
 			self.p2.slots[key].update(); 
 		}
- 
 	}
+
+	
 
 	return self; 
 }

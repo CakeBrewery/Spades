@@ -25,6 +25,7 @@ Entity = function(type, id, x, y, spdX, spdY, width, height, img){
 		x -= self.height/2; 
 
 		ctx.drawImage(self.img, 0, 0, self.img.width, self.img.height, x, y, self.width, self.height); 
+		ctx.restore(); 
 	}
 
 	self.getDistance = function(entity2){

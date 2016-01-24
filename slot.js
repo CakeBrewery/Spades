@@ -17,8 +17,11 @@ Slot = function(id, x, y, width, height){
 
 	self.draw = function(){
 		ctx.save(); 
+
+		ctx.beginPath();
 		ctx.rect(self.x,self.y,50,70); 
 		ctx.stroke();
+		
 		ctx.restore(); 
 	}
 
