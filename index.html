@@ -11,20 +11,24 @@
 <script src="player.js"></script> 
 <script src="game.js"></script> 
 <script src="slot.js"></script> 
+<script src="util.js"></script> 
 
 <script> 
 var ctx = document.getElementById("ctx").getContext("2d");
 ctx.font = '30px Arial'
 
-game = Game(); 
-
-ctx.canvas.addEventListener('click', function(event){
-	game.mouseX = event.clientX - ctx.canvas.offsetLeft; 
-	game.mouseY = event.clientY - ctx.canvas.offsetTop; 
-});
-
 var WIDTH = 600; 
 var HEIGHT = 600; 
+
+game = Game(); 
+game.init(); 
+game.setPhase('initial'); 
+game.setPhase('p1_turn'); 
+
+ctx.canvas.addEventListener('mousemove', function(event){
+	game.mouse.x = event.clientX - ctx.canvas.offsetLeft; 
+	game.mouse.y = event.clientY - ctx.canvas.offsetTop; 
+});
 
 
 update = function(){
@@ -32,8 +36,6 @@ update = function(){
 	game.update();
 };
 
-game.init(); 
-game.setPhase('initial'); 
 setInterval(update, 100); 
 </script> 
 

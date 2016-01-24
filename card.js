@@ -14,31 +14,31 @@ Card = function(rank, suit, name, id, x, y, width, height, img){
 		ctx.save(); 
 		ctx.fillStyle="#FFFFFF";
 		ctx.beginPath();
-		ctx.rect(self.x,self.y,this.width,this.height); 
-		ctx.fillRect(self.x,self.y,this.width,this.height); 
+		ctx.rect(self.x-self.width/2,self.y-self.height/2,this.width,this.height); 
+		ctx.fillRect(self.x-self.width/2,self.y-self.height/2,this.width,this.height); 
 		ctx.stroke(); 
 		ctx.closePath(); 
 
 		switch(self.suit){
 			case 'diamonds': 
 				ctx.fillStyle = 'red';
-				ctx.fillText(self.rank, self.x+15, self.y+30);
-				ctx.fillText('\u2666',self.x+15, self.y+60);
+				ctx.fillText(self.rank, self.x-10, self.y-5);
+				ctx.fillText('\u2666',self.x-7, self.y+20);
 				break; 
 			case 'clubs': 
 				ctx.fillStyle = 'black';
-				ctx.fillText(self.rank, self.x+15, self.y+30);
-				ctx.fillText('\u2663', self.x+15, self.y+60);			
+				ctx.fillText(self.rank, self.x-10, self.y-5);
+				ctx.fillText('\u2663', self.x-7, self.y+20);			
 				break; 
 			case 'hearts':
 				ctx.fillStyle = 'red';
-				ctx.fillText(self.rank, self.x+15, self.y+30);
-				ctx.fillText('\u2665', self.x+15, self.y+60);
+				ctx.fillText(self.rank, self.x-10, self.y-5);
+				ctx.fillText('\u2665', self.x-7, self.y+20);
 				break;
 			case 'spades':
 				ctx.fillStyle = 'black';
-				ctx.fillText(self.rank, self.x+15, self.y+30);
-				ctx.fillText('\u2660', self.x+15, self.y+60);
+				ctx.fillText(self.rank, self.x-10, self.y-5);
+				ctx.fillText('\u2660', self.x-7, self.y+20);
 				break; 
 			default: 
 				break; 
