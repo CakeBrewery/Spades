@@ -13,10 +13,12 @@ Player = function(){
 		var newCards = self.deck.draw(n)
 
 		newCards.forEach(function(card){
-			self.hand.push(card); 
+			self.hand[card.id] = card; 
 		});
 
-		return self.updateHand(); 
+		self.updateHand(); 
+
+		return newCards; 
 	}
 
 	self.fillHand = function(n){
@@ -24,20 +26,22 @@ Player = function(){
 		var newCards = self.deck.draw(n-current)
 
 		newCards.forEach(function(card){
-			self.hand.push(card); 
+			self.hand[card.id] = card; 
 		});
 
-		return self.updateHand();
+		self.updateHand(); 
+
+		return newCards;
 	}
 
 	self.updateHand = function(){
 		var x = self.x;
 		var y = self.y;
-		self.hand.forEach(function(card){
-			card.x = x; 	
-			card.y = y; 
-			x += 70; 
-		});
+		for(var key in self.hand){
+			self.hand[key].x = x; 
+			self.hand[key].y = y; 
+			x += 70;
+		}
 
 		return self.hand; 
 	}

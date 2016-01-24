@@ -1,11 +1,12 @@
-Slot = function(id, x, y, width, height){
-	var self = Entity('Slot', id, x, y, 0, 0, width, height); 
+Slot = function(id, x, y, width, height, owner){
+	var self = Entity('slot', id, x, y, 0, 0, width, height); 
 
 	self.x =  x;
 	self.y = y; 
-	self.width = width; 
-	self.height = height;
+	self.width = 50; 
+	self.height = 70;
 	self.card = null;
+	self.owner = owner; 
 
 	self.setCard = function(card){
 		card.x = self.x; 
@@ -19,9 +20,9 @@ Slot = function(id, x, y, width, height){
 		ctx.save(); 
 
 		ctx.beginPath();
-		ctx.rect(self.x,self.y,50,70); 
+		ctx.rect(self.x-self.width/2,self.y-self.height/2,self.width,self.height); 
 		ctx.stroke();
-		
+
 		ctx.restore(); 
 	}
 

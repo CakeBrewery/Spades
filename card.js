@@ -8,14 +8,26 @@ Card = function(rank, suit, name, id, x, y, width, height, img){
 
 	self.name =  name || 'poker card'; 
 	self.rank =  rank; 
-	self.suit = suit, 
+	self.suit = suit;  
+	self.outline = "#FFFFFF";
+	self.active = false; 
+
+	self.highlight = function(color){
+		self.outline = color || '#FFFFFF';
+	};
+
 
 	self.draw = function(){
 		ctx.save(); 
-		ctx.fillStyle="#FFFFFF";
+		ctx.fillStyle=self.outline;
+
+		if(self.active === true){
+			ctx.fillStyle='#CCCCCC'
+		}
+
 		ctx.beginPath();
-		ctx.rect(self.x-self.width/2,self.y-self.height/2,this.width,this.height); 
 		ctx.fillRect(self.x-self.width/2,self.y-self.height/2,this.width,this.height); 
+		ctx.rect(self.x-self.width/2,self.y-self.height/2,this.width,this.height); 
 		ctx.stroke(); 
 		ctx.closePath(); 
 
@@ -44,7 +56,7 @@ Card = function(rank, suit, name, id, x, y, width, height, img){
 				break; 
 		}
 		ctx.restore(); 
-	}
+	};
 
 	return self; 
 }

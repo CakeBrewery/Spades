@@ -10,7 +10,7 @@ getDefaultCards = function(){
 
 	ranks.forEach(function(rank){
 		suits.forEach(function(suit){
-			var card = Card(rank, suit);
+			var card = Card(rank, suit, 'card', genObjectId());
 			cards.push(card); 
 		});
 	});
